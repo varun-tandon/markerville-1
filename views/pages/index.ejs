@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+    <head>
+            <% include ../partials/head %>
+
+ 
+      </style>
+        
+    </head>
+    <body class="appear-animate">
+        
+        <!-- Page Loader -->        
+        <% include ../partials/loader %>
+        <!-- End Page Loader -->
+        
+        <!-- Page Wrap -->
+        <div class="page" id="top">
+            
+            <!-- Home Section -->
+            <section class="home-section bg-gray bg-light-alfa-50 parallax-2" data-background="images/full-width-images/section-bg-7.jpg" id="home">
+                <div class="js-height-full">
+                    
+                    <!-- Hero Content -->
+                    <div class="home-content container">
+                        <div class="home-text">
+                               <% if(typeof optional_text!='undefined' && optional_text!=undefined) { %>
+                    <span>
+                        <%= optional_text %><br>
+                    </span>
+                <% } %>
+                <br>
+              
+                            <h1 class="hs-line-8 no-transp font-alt mb-50 mb-xs-30">
+                                Developed by the Stanford Canary Center
+                            </h1>
+                            
+                            <h2 class="hs-line-14 font-alt mb-50 mb-xs-30">
+                               MarkerVille
+                            </h2>
+                            
+                            <div class="local-scroll">
+                                              				<div id = centerme>	
+
+                                 <form id="main_search_bar" method="get" class = "form">
+                       			 <input type="search" align="center" class = "input-md form-control" id="search_bar" name="biomarker" placeholder="Enter a biomarker..." >
+                 <% if(search_failed) { %>
+                    <p style="text-align: center;">
+                        <strong><%= biomarkerName %></strong>
+                        could not be found in the Markerville database.<br><br>
+                    </p>
+                <% } %>
+                    			<input type="submit" id="search_button" value="Search" class="btn btn-mod btn-w btn-circle btn-medium" >
+                   				
+                </form>
+                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <!-- End Hero Content -->
+                    
+                    <!-- Scroll Down -->
+                    
+                    <!-- End Scroll Down -->
+                    
+                </div>
+            </section>
+            <!-- End Home Section -->
+            
+            <!-- Navigation panel -->
+            <!-- End Navigation panel -->
+            
+           
+            <!-- End Blog Section -->
+            
+            
+            
+            
+            
+            <!-- Foter -->
+            <% include ../partials/footer %>
+            <!-- End Foter -->
+        
+        
+        </div>
+        <!-- End Page Wrap -->
+        
+        
+        <!-- JS -->
+        <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+        <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>        
+        <script type="text/javascript" src="js/SmoothScroll.js"></script>
+        <script type="text/javascript" src="js/jquery.scrollTo.min.js"></script>
+        <script type="text/javascript" src="js/jquery.localScroll.min.js"></script>
+        <script type="text/javascript" src="js/jquery.viewport.mini.js"></script>
+        <script type="text/javascript" src="js/jquery.countTo.js"></script>
+        <script type="text/javascript" src="js/jquery.appear.js"></script>
+        <script type="text/javascript" src="js/jquery.sticky.js"></script>
+        <script type="text/javascript" src="js/jquery.parallax-1.1.3.js"></script>
+        <script type="text/javascript" src="js/jquery.fitvids.js"></script>
+        <script type="text/javascript" src="js/owl.carousel.min.js"></script>
+        <script type="text/javascript" src="js/isotope.pkgd.min.js"></script>
+        <script type="text/javascript" src="js/imagesloaded.pkgd.min.js"></script>
+        <script type="text/javascript" src="js/jquery.magnific-popup.min.js"></script>
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
+        <script type="text/javascript" src="js/gmap3.min.js"></script>
+        <script type="text/javascript" src="js/wow.min.js"></script>
+        <script type="text/javascript" src="js/masonry.pkgd.min.js"></script>
+        <script type="text/javascript" src="js/jquery.simple-text-rotator.min.js"></script>
+        <script type="text/javascript" src="js/all.js"></script>
+        <script type="text/javascript" src="js/contact-form.js"></script>
+        <script type="text/javascript" src="js/jquery.ajaxchimp.min.js"></script>        
+        <!--[if lt IE 10]><script type="text/javascript" src="js/placeholder.js"></script><![endif]-->
+        
+    </body>
+    <% if(logged_in) { %>
+<% include ../partials/navbar_loggedin %>
+<% } else { %>
+<% include ../partials/navbar %>
+<% } %>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../../partials/head %>
+</head>
+<body id="top">
+
+    <div id="wrapper">
+
+        <!-- HEADER -->
+        <div id="header_wrap" class="outer">
+            <header class="inner">
+                <% include ../../partials/header %>
+            </header>
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <div id="main_content_wrap" class="outer">
+            <section id="main_content" class="inner">
+                <% if(typeof create_account_problem_text!='undefined' && create_account_problem_text!=undefined) { %>
+                    <p>
+                        <br><%= create_account_problem_text %>
+                    </p>
+                <% } else { %>
+                    <p>
+                        Congratulations <strong><%= name %></strong>!
+                    </p>
+                    <p>
+                        Your account under the email
+                        <strong><%= email %></strong>
+                        was successfully verified. You
+                        can <a href = ./../login>log in</a> now.
+                    </p>
+                <% } %>
+            </section>
+        </div>
+
+        <!-- FOOTER  -->
+        <div id="footer_wrap" class="outer">
+            <footer class="inner">
+                <% include ../../partials/footer %>
+            </footer>
+        </div>
+
+    </div><!-- END WRAPPER -->
+
+</body>
+
+<% include ../../partials/navbar %>
+
+</html>

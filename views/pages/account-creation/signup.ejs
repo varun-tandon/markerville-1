@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../../partials/head %>
+</head>
+<body id="top">
+
+    <div id="wrapper">
+
+        <!-- HEADER -->
+        <div id="header_wrap" class="outer">
+            <header class="inner">
+                <% include ../../partials/header %>
+            </header>
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <div id="main_content_wrap" class="outer">
+            <section id="main_content" class="inner">
+                <% if(typeof create_account_problem_text!='undefined' && create_account_problem_text!=undefined) { %>
+                    <span>
+                        <%= create_account_problem_text %><br>
+                    </span>
+                <% } %>
+                <br>
+                <form id="signup_form" method="post">
+                    First Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="text" name="user[firstname]" required>
+                    <br><br>
+                    Last Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="text" name="user[lastname]" required>
+                    <br><br>
+                    Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="email" name="user[email]" required>
+                    <br><br>
+                    Password:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="password" name="user[pwd]" required>
+                    <br><br>
+                    Repeat Password:&nbsp;&nbsp;  <input type="password" name="user[repeatpwd]" required>
+                    <br><br>
+                    <input type="submit" id="submit_button" value="Sign Up">
+                    <br><br>
+                </form>
+            </section>
+        </div>
+
+        <!-- FOOTER  -->
+        <div id="footer_wrap" class="outer">
+            <footer class="inner">
+                <% include ../../partials/footer %>
+            </footer>
+        </div>
+
+    </div><!-- END WRAPPER -->
+
+</body>
+
+<% if(logged_in) { %>
+<% include ../../partials/navbar_loggedin %>
+<% } else { %>
+<% include ../../partials/navbar %>
+<% } %>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/head %>
+</head>
+<body id="top">
+
+    <div id="wrapper">
+
+        <!-- HEADER -->
+        <div id="header_wrap" class="outer">
+            <header class="inner">
+                <% include ../partials/header %>
+            </header>
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <div id="main_content_wrap" class="outer">
+            <section id="main_content" class="inner">
+                <% if(typeof login_problem_text!='undefined' && login_problem_text!=undefined) { %>
+                    <span>
+                        <%= login_problem_text %><br>
+                    </span>
+                <% } %>
+                <br>
+                <form id="login_form" method="post">
+                    Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                    <input type="email" name="user[email]" required>
+                    <br><br>
+                    Password:&nbsp;&nbsp;  <input type="password" name="user[pwd]" required>
+                    <br><br>
+                    <input type="submit" id="submit_button" value="Log In">
+                    <br><br>
+                </form>
+                <span><small>
+                    By logging in, you agree to using cookies.<br>
+                    <a href="/change-password">Forgot your password?</a>
+                </small></span>
+            </section>
+        </div>
+
+        <!-- FOOTER  -->
+        <div id="footer_wrap" class="outer">
+            <footer class="inner">
+                <% include ../partials/footer %>
+            </footer>
+        </div>
+
+    </div><!-- END WRAPPER -->
+
+</body>
+
+<% if(logged_in) { %>
+<% include ../partials/navbar_loggedin %>
+<% } else { %>
+<% include ../partials/navbar %>
+<% } %>
+
+</html>

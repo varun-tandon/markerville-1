@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/head %>
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/accordion.js"></script>
+</head>
+<body id="top">
+
+    <div id="wrapper">
+
+        <!-- HEADER -->
+        <div id="header_wrap" class="outer">
+            <header class="inner">
+                <% include ../partials/header %>
+            </header>
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <div id="main_content_wrap" class="outer">
+            <section id="main_content" class="inner">
+                <section id="dossier">
+
+                    <div><h1><%= biomarkerInfo['Name'] %></h1><br></div>
+
+                    <div id="accordion">
+                        <section id="biomarkerInfoAccordionSection">
+                            <p class="pointer">&#9654;</p><h1><a href="#">biomolecule info</a></h1>
+                            <p>
+                                <p class="dossier_label">Type:&nbsp;&nbsp;</p>
+                                <%= biomarkerInfo['Type'] %>
+                            </p>
+
+                            <p>
+                                <p class="dossier_label">Medium:&nbsp;&nbsp;</p>
+                                <%= biomarkerInfo['Medium'] %>
+                            </p>
+
+                            <p class="dossier_label">Alternate Names:&nbsp;&nbsp;</p>
+                            <ul>
+                                <% biomarkerInfo['Alternate Names'].forEach(function(name) { %>
+                                    <li><%= name %></li>
+                                <% }); %>
+                            </ul>
+                            <br>
+                        </section>
+
+                        <section id="sourceInfoAccordionSection" class="ac_hidden">
+                            <p class="pointer">&#9654;</p><h1><a href="#">sources</a></h1>
+                            
+                            <!-- ACCOUNTING FOR MORE THAN ONE PAPER -->
+                            <% for(var i=0; i < biomarkerInfo['Sources'].length; i++) { %>
+                                <div class="dossier_source_header"><br><br>Source #<%= i+1 %><br><br></div>
+
+                                <p>
+                                    <p class="dossier_label">Raw Source:&nbsp;&nbsp;</p>
+                                    <a href='<%= biomarkerInfo['Sources'][i]['URL'] %>' target="_blank">
+                                        <%= biomarkerInfo['Sources'][i]['Google ID'] %>
+                                    </a>
+                                    &nbsp;(<%= biomarkerInfo['Sources'][i]['Source Type'] %> from <%= biomarkerInfo['Sources'][i]['Original Source Database'] %>)
+                                </p>
+
+                                <p>
+                                    <p class="dossier_label">Biomolecule State:&nbsp;&nbsp;</p>
+                                    <%= biomarkerInfo['Sources'][i]['Biomolecule State'] %> 
+                                </p>
+
+                                <p>
+                                <% if (biomarkerInfo['Sources'][i]['Drug Name'] !== null) { %>
+                                    <p class="dossier_label">Drug Name:&nbsp;&nbsp;</p>
+                                    <%= biomarkerInfo['Sources'][i]['Drug Name'] %>
+                                <% } %>
+                                </p>
+
+                                <p>
+                                    <p class="dossier_label">Disease:&nbsp;&nbsp;</p>
+                                    <%= biomarkerInfo['Sources'][i]['Disease'] %>
+                                </p>
+
+                                <p>
+                                    <p class="dossier_label">Purpose:&nbsp;&nbsp;</p>
+                                    <%= biomarkerInfo['Sources'][i]['Purpose'] %> 
+                                </p>
+
+                                <p>
+                                <% if (biomarkerInfo['Sources'][i]['Other Biomarkers'] !== null && biomarkerInfo['Sources'][i]['Other Biomarkers'].length > 0) { %>
+                                    <p class="dossier_label">Other Referenced Biomarkers:&nbsp;&nbsp;</p>
+                                    <ul>
+                                        <% biomarkerInfo['Sources'][i]['Other Biomarkers'].forEach(function(marker) { %>
+                                            <li><a href="/?biomarker=<%= marker %>"><%= marker %></a></li>
+                                        <% }); %>
+                                    </ul>
+                                <% } %>
+                                </p>
+
+                                <p class="dossier_label">Trials:&nbsp;&nbsp;</p>
+                                
+                                <blockquote>
+                                    <table id="dossier_trials_table">
+                                        <tr>
+                                            <th> Method of Discovery </th>
+                                            <th> # Patients </th>
+                                        </tr>
+                                        <% for(var j=0; j<biomarkerInfo['Sources'][i]['Trials'].length; j++) { %>
+                                        <tr>
+                                            <td> <%= biomarkerInfo['Sources'][i]['Trials'][j]['Discovery Method'] %> </td>
+                                            <% if (biomarkerInfo['Sources'][i]['Trials'][j]['# Patients'] !== null) { %>
+                                                <td> <%= biomarkerInfo['Sources'][i]['Trials'][j]['# Patients'] %> </td>
+                                            <% } else { %>
+                                                <td> -- </td>
+                                            <% } %>
+                                        </tr>
+                                        <% } %>
+                                    </table>
+                                </blockquote>
+                                <br>
+                            <% } %>
+
+                        </section>
+                    
+
+                        <section id="item3" class="ac_hidden">
+                            <p class="pointer">&#9654;</p><h1><a href="#">contributors</a></h1>
+                            <p>
+                                <br>
+                                Nathan Dalal
+                                <br>
+                                Mythri Ambatipudi
+                                <p>No dynamic contributors displayed yet. Coming soon... </p>
+                            </p>
+                        </section>
+                    </div>
+
+                </section>
+            </section>
+        </div>
+
+        <!-- FOOTER  -->
+        <div id="footer_wrap" class="outer">
+            <footer class="inner">
+                <% include ../partials/footer %>
+            </footer>
+        </div>
+
+    </div><!-- END WRAPPER -->
+
+</body>
+
+<% if(logged_in) { %>
+<% include ../partials/navbar_loggedin %>
+<% } else { %>
+<% include ../partials/navbar %>
+<% } %>
+
+</html>

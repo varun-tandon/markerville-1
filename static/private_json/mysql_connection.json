@@ -1,0 +1,7 @@
+{
+    "host"                  : "canaryctr-donald.stanford.edu",
+    "user"                  : "markerville_user",
+    "password"              : "b1omark3rsRock!",
+    "database"              : "MARKERVILLE",
+    "multipleStatements"    : true
+}
